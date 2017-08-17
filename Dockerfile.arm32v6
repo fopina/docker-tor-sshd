@@ -3,6 +3,8 @@ FROM fopina/alpine-arm:3.6
 RUN [ "cross-build-start" ]
 RUN apk add --no-cache openssh-server tor s6
 RUN echo PermitRootLogin yes >> /etc/ssh/sshd_config
+# alpine arm package does not create tor user???
+RUN adduser -s /bin/false -u 190 -D -H tor
 RUN [ "cross-build-end" ]
 
 COPY entry.sh /entry.sh
