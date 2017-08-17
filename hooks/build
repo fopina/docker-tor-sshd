@@ -1,12 +1,9 @@
 #!/bin/bash
 
-env
-
-which envsubst
-
+VERSION=$(cat VERSION)
 echo "Build hook running"
 
 echo "Building for x84_64..."
-docker build -t $DOCKER_REPO:$CACHE_TAG -f Dockerfile .
+docker build -t $DOCKER_REPO:$VERSION -f Dockerfile .
 echo "Building for arm32v6..."
-docker build -t $DOCKER_REPO:arm-$CACHE_TAG -f Dockerfile.arm32v6 .
+docker build -t $DOCKER_REPO:arm-$VERSION -f Dockerfile.arm32v6 .
