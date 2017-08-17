@@ -1,0 +1,11 @@
+#!/bin/bash
+
+echo "Tagging and pushing..."
+
+docker tag $DOCKER_REPO:$CACHE_TAG $DOCKER_REPO:arm
+docker tag $DOCKER_REPO:arm-$CACHE_TAG $DOCKER_REPO:arm
+
+docker push $DOCKER_REPO
+docker push $DOCKER_REPO:$CACHE_TAG
+docker push $DOCKER_REPO:arm
+docker push $DOCKER_REPO:arm-$CACHE_TAG

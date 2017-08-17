@@ -1,0 +1,8 @@
+#!/bin/bash
+
+echo "Build hook running"
+
+echo "Building for x84_64..."
+docker build -t $DOCKER_REPO:$CACHE_TAG -f Dockerfile .
+echo "Building for arm32v6..."
+docker build -t $DOCKER_REPO:arm-$CACHE_TAG -f Dockerfile.arm32v6 .
